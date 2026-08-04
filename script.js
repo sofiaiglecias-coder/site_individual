@@ -450,6 +450,24 @@ document.querySelectorAll("input[type='radio']").forEach(option => {
     });
 
 });
+/* ==========================================================
+   ABRIR MENU DE CONFIGURAÇÕES
+========================================================== */
+
+
+const settingsButton = document.getElementById("settingsButton");
+
+const accessibilityPanel =
+document.getElementById("accessibilityPanel");
+
+
+settingsButton.addEventListener("click", () => {
+
+
+    accessibilityPanel.classList.toggle("active");
+
+
+});
 
 /* ==========================================================
    FIM DO SCRIPT
