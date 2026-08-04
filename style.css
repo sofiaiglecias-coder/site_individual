@@ -1,324 +1,1106 @@
 /* ==========================================================
-   TEMA SIMBIONTE - HOMEM ARANHA / VENOM
+   RESET - SIMBIONTE
 ========================================================== */
 
+* {
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+html {
+
+    scroll-behavior:smooth;
+
+}
+
+
+
 body {
+
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+
     background:
-        radial-gradient(circle at top, #3b0000, #050505 70%);
-    color: #eee;
+
+    radial-gradient(
+    circle at top,
+    #450000,
+    #050505 75%
+    );
+
+
+    color:#eee;
+
+
+    line-height:1.7;
+
+
+    overflow-x:hidden;
+
+
+    transition:.5s;
+
+
 }
 
 
-/* Teias no fundo */
+
+/* ==========================================================
+   FUNDO DE TEIAS
+========================================================== */
+
+
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image:
-        repeating-radial-gradient(
-            circle,
-            transparent 0,
-            transparent 45px,
-            rgba(255,255,255,.08) 47px
-        ),
-        repeating-linear-gradient(
-            45deg,
-            transparent 0,
-            transparent 80px,
-            rgba(180,180,180,.05) 82px
-        );
 
-    pointer-events: none;
-    z-index: -1;
+
+content:"";
+
+
+position:fixed;
+
+
+inset:0;
+
+
+background:
+
+
+repeating-radial-gradient(
+
+circle,
+
+transparent 0,
+
+transparent 60px,
+
+rgba(255,255,255,.08) 62px
+
+),
+
+
+repeating-linear-gradient(
+
+45deg,
+
+transparent,
+
+transparent 90px,
+
+rgba(255,0,0,.04) 92px
+
+);
+
+
+
+pointer-events:none;
+
+
+z-index:-2;
+
+
 }
 
 
-/* Barra superior estilo simbionte */
+
+/* ==========================================================
+   PARTÍCULAS
+========================================================== */
+
+
+#particles {
+
+
+position:fixed;
+
+
+inset:0;
+
+
+pointer-events:none;
+
+
+z-index:-1;
+
+
+}
+
+
+
+.particle {
+
+
+position:absolute;
+
+
+width:7px;
+
+
+height:7px;
+
+
+border-radius:50%;
+
+
+background:red;
+
+
+box-shadow:
+
+0 0 15px red;
+
+
+animation:
+
+floatParticle 10s infinite linear;
+
+
+opacity:.7;
+
+
+}
+
+
+
+@keyframes floatParticle {
+
+
+from {
+
+transform:
+
+translateY(100vh)
+rotate(0deg);
+
+}
+
+
+
+to {
+
+
+transform:
+
+translateY(-120vh)
+rotate(360deg);
+
+
+}
+
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   BARRA DE ACESSIBILIDADE
+========================================================== */
+
 
 .accessibility-bar {
-    background: linear-gradient(90deg,#000,#7b0000,#000);
-    border-bottom: 2px solid #ff0000;
+
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#000,
+
+#900000,
+
+#000
+
+);
+
+
+border-bottom:
+
+2px solid red;
+
+
 }
+
+
 
 
 .accessibility-bar button {
-    background:#111;
-    color:#ff3030;
-    border:1px solid #ff0000;
+
+
+background:#080808;
+
+
+color:#ff3030;
+
+
+border:
+
+1px solid red;
+
+
+border-radius:10px;
+
+
+padding:10px 18px;
+
+
+font-weight:bold;
+
+
+cursor:pointer;
+
+
+transition:.3s;
+
+
 }
 
 
 
-/* Header sombrio */
+.accessibility-bar button:hover {
+
+
+transform:scale(1.1);
+
+
+box-shadow:
+
+0 0 20px red;
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   BOTÃO CONFIGURAÇÕES
+========================================================== */
+
+
+.settings-button {
+
+
+position:fixed;
+
+
+top:20px;
+
+
+right:20px;
+
+
+width:60px;
+
+
+height:60px;
+
+
+border-radius:50%;
+
+
+border:none;
+
+
+background:
+
+radial-gradient(
+circle,
+#ff0000,
+#000
+);
+
+
+color:white;
+
+
+font-size:25px;
+
+
+cursor:pointer;
+
+
+z-index:10000;
+
+
+box-shadow:
+
+0 0 25px red;
+
+
+transition:.5s;
+
+
+}
+
+
+
+.settings-button:hover {
+
+
+transform:
+
+rotate(90deg)
+scale(1.15);
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   PAINEL ACESSIBILIDADE
+========================================================== */
+
+
+.accessibility-panel {
+
+
+position:fixed;
+
+
+top:90px;
+
+
+right:20px;
+
+
+background:#080808;
+
+
+padding:20px;
+
+
+border-radius:20px;
+
+
+border:
+
+2px solid red;
+
+
+display:flex;
+
+
+flex-direction:column;
+
+
+gap:12px;
+
+
+opacity:0;
+
+
+pointer-events:none;
+
+
+transform:
+
+translateY(-20px);
+
+
+transition:.4s;
+
+
+z-index:9999;
+
+
+box-shadow:
+
+0 0 30px rgba(255,0,0,.5);
+
+
+}
+
+
+
+.accessibility-panel.active {
+
+
+opacity:1;
+
+
+pointer-events:auto;
+
+
+transform:
+
+translateY(0);
+
+
+}
+
+
+
+.accessibility-panel button {
+
+
+width:160px;
+
+
+padding:12px;
+
+
+background:#111;
+
+
+color:white;
+
+
+border:
+
+1px solid red;
+
+
+border-radius:10px;
+
+
+cursor:pointer;
+
+
+}
+/* ==========================================================
+   HEADER - TRAJE SIMBIONTE
+========================================================== */
+
 
 header {
+
+
+    position:sticky;
+
+
+    top:0;
+
+
+    z-index:999;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
+
+    padding:20px 8%;
+
+
     background:
-        linear-gradient(135deg,#050505,#210000);
-    border-bottom:3px solid #8b0000;
+
+
+    linear-gradient(
+
+    135deg,
+
+    #050505,
+
+    #250000
+
+    );
+
+
+    border-bottom:
+
+    3px solid #990000;
+
+
     box-shadow:
-        0 5px 25px rgba(255,0,0,.25);
+
+
+    0 0 30px rgba(255,0,0,.4);
+
+
 }
+
+
 
 
 .logo h1 {
-    color:#ff1a1a;
+
+
+    color:#ff2020;
+
+
+    font-size:2.2rem;
+
+
     text-shadow:
-        3px 3px 0 #000,
-        0 0 15px red;
+
+
+    0 0 15px red;
+
+
 }
 
 
 
-/* Navegação */
+#greeting {
+
+
+    color:#ddd;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   MENU
+========================================================== */
+
+
+nav ul {
+
+
+    display:flex;
+
+
+    gap:25px;
+
+
+    list-style:none;
+
+
+}
+
+
 
 nav a {
-    color:#ddd;
-}
 
-nav a:hover {
-    color:#ff2020;
-    text-shadow:0 0 10px red;
-}
-
-
-
-/* Carrossel */
-
-.caption {
-    background:
-        linear-gradient(135deg,
-        rgba(0,0,0,.9),
-        rgba(80,0,0,.7));
-
-    border-left:5px solid #e00000;
-    box-shadow:
-        0 0 25px rgba(255,0,0,.5);
-}
-
-
-.caption h2 {
-    color:#fff;
-    text-shadow:
-        0 0 10px red;
-}
-
-
-
-/* Cards com aparência de simbionte */
-
-.card,
-.question {
-
-    background:
-        linear-gradient(145deg,#111,#250000);
 
     color:white;
 
-    border:1px solid #7d0000;
 
-    box-shadow:
-        0 0 20px rgba(255,0,0,.25),
-        inset 0 0 20px rgba(255,255,255,.03);
+    text-decoration:none;
+
+
+    font-weight:bold;
+
+
+    position:relative;
+
+
+    transition:.3s;
+
 
 }
+
+
+
+nav a::after {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    bottom:-8px;
+
+
+    left:0;
+
+
+    width:0;
+
+
+    height:3px;
+
+
+    background:red;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+nav a:hover::after {
+
+
+    width:100%;
+
+
+}
+
+
+
+nav a:hover {
+
+
+    color:red;
+
+
+    text-shadow:
+
+
+    0 0 15px red;
+
+
+}
+
+
+
+
+
+/* ==========================================================
+   OLHOS DO VENOM
+========================================================== */
+
+
+#venomEyes {
+
+
+    position:fixed;
+
+
+    top:110px;
+
+
+    right:40px;
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    z-index:50;
+
+
+}
+
+
+
+#venomEyes span {
+
+
+    width:45px;
+
+
+    height:70px;
+
+
+    background:white;
+
+
+    border-radius:
+
+
+    50% 50% 15% 15%;
+
+
+    transform:skew(-20deg);
+
+
+    box-shadow:
+
+
+    0 0 25px white;
+
+
+    animation:
+
+    eyeGlow 2s infinite;
+
+
+}
+
+
+
+
+@keyframes eyeGlow {
+
+
+50% {
+
+
+box-shadow:
+
+
+0 0 50px white;
+
+
+}
+
+
+}
+
+
+
+
+
+
+/* ==========================================================
+   CARROSSEL
+========================================================== */
+
+
+.carousel {
+
+
+    height:500px;
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.slides {
+
+
+    height:100%;
+
+
+}
+
+
+
+.slide {
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    opacity:0;
+
+
+    transition:
+
+    opacity 1s;
+
+
+}
+
+
+
+.slide.active {
+
+
+    opacity:1;
+
+
+}
+
+
+
+.slide img {
+
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
+    filter:
+
+
+    brightness(.45)
+    contrast(1.2);
+
+
+}
+
+
+
+.caption {
+
+
+    position:absolute;
+
+
+    left:8%;
+
+
+    bottom:60px;
+
+
+    max-width:600px;
+
+
+    padding:25px;
+
+
+    background:
+
+
+    rgba(0,0,0,.75);
+
+
+    border-left:
+
+
+    5px solid red;
+
+
+    border-radius:15px;
+
+
+    box-shadow:
+
+
+    0 0 30px red;
+
+
+}
+
+
+
+.caption h2 {
+
+
+    font-size:2.2rem;
+
+
+    color:white;
+
+
+    text-shadow:
+
+
+    0 0 15px red;
+
+
+}
+
+
+
+
+
+
+/* ==========================================================
+   SEÇÕES
+========================================================== */
+
+
+.section {
+
+
+    padding:80px 10%;
+
+
+}
+
+
+
+.section h2 {
+
+
+    text-align:center;
+
+
+    color:#ff3030;
+
+
+    font-size:2.3rem;
+
+
+    margin-bottom:30px;
+
+
+    text-shadow:
+
+
+    0 0 15px red;
+
+
+}
+
+
+
+.section p {
+
+
+    font-size:18px;
+
+
+    text-align:justify;
+
+
+}
+
+
+
+
+
+
+/* ==========================================================
+   CARDS 3D
+========================================================== */
+
+
+.cards {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+
+    gap:30px;
+
+
+    margin-top:40px;
+
+
+}
+
+
+
+.card {
+
+
+    background:
+
+
+    linear-gradient(
+
+    145deg,
+
+    #111,
+
+    #300000
+
+    );
+
+
+    padding:35px;
+
+
+    border-radius:20px;
+
+
+    text-align:center;
+
+
+    border:
+
+
+    1px solid #900;
+
+
+    box-shadow:
+
+
+    0 0 25px rgba(255,0,0,.3);
+
+
+    transition:.4s;
+
+
+    transform-style:preserve-3d;
+
+
+}
+
 
 
 .card:hover {
 
-    transform:
-        translateY(-10px)
-        scale(1.03);
 
-    border-color:red;
+    transform:
+
+
+    translateY(-15px)
+
+    rotateY(8deg);
+
 
     box-shadow:
-        0 0 30px red;
+
+
+    0 0 40px red;
+
 
 }
+
+
 
 
 .card i {
 
-    color:#ff0000;
+
+    font-size:50px;
+
+
+    color:red;
+
+
+    margin-bottom:20px;
+
 
     text-shadow:
-        0 0 15px red;
-}
 
 
+    0 0 20px red;
 
-.card h3,
-.section h2 {
-
-    color:#ff3030;
-
-    text-shadow:
-        0 0 12px red;
-}
-
-
-
-/* Botões */
-
-button,
-#supportForm button,
-#showResult {
-
-    background:
-        linear-gradient(45deg,#000,#990000);
-
-    color:white;
-
-    border:1px solid red;
-
-    box-shadow:
-        0 0 15px rgba(255,0,0,.5);
-
-}
-
-
-button:hover {
-
-    background:#d00000;
-
-    transform:scale(1.08);
 
 }
 
 
 
-/* Emoji de humor */
-
-.mood {
-
-    background:#080808;
-
-    border:2px solid #900;
-
-}
+.card h3 {
 
 
-.mood.selected {
-
-    background:#b00000;
-
-    box-shadow:
-        0 0 20px red;
-}
+    color:#ff4040;
 
 
+    margin-bottom:15px;
 
-/* Botão configurações */
-
-.settings-button {
-
-    background:
-        radial-gradient(circle,#d00000,#000);
-
-    border:2px solid red;
-
-    box-shadow:
-        0 0 20px red;
-}
-
-
-
-/* Voltar ao topo */
-
-#backToTop {
-
-    background:#000;
-
-    border:2px solid red;
-
-    box-shadow:
-        0 0 15px red;
-}
-
-
-
-/* Rodapé */
-
-footer {
-
-    background:
-        linear-gradient(#150000,#000);
-
-    border-top:3px solid #900;
 
 }
 
 
 
-/* Modo alto contraste adaptado */
-
-body.high-contrast {
-
-    background:#000;
-
-    color:#ff0000;
-
-}
+.card p {
 
 
-/* Efeito de rachaduras/teias em seções */
+    text-align:center;
 
-.section {
-
-    position:relative;
-}
-
-
-.section::after {
-
-    content:"";
-
-    position:absolute;
-
-    right:20px;
-
-    top:20px;
-
-    width:120px;
-
-    height:120px;
-
-    background:
-    radial-gradient(circle,
-    transparent 35%,
-    rgba(255,255,255,.12) 36%,
-    transparent 38%);
-
-    opacity:.5;
-
-    transform:rotate(25deg);
-
-}
-
-
-
-/* Animação simbionte */
-
-@keyframes venomPulse {
-
-    0% {
-        filter:drop-shadow(0 0 5px red);
-    }
-
-    50% {
-        filter:drop-shadow(0 0 25px red);
-    }
-
-    100% {
-        filter:drop-shadow(0 0 5px red);
-    }
-}
-
-
-.logo h1,
-.settings-button {
-
-    animation:
-        venomPulse 2s infinite;
 
 }

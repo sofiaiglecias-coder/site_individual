@@ -1,475 +1,1509 @@
-# `script.js`
-
-```javascript
 /* ==========================================================
-   PORTAL DE SAÚDE EMOCIONAL
-   Todas as funções estão comentadas para facilitar o estudo.
+   PORTAL SAÚDE EMOCIONAL
+   EDIÇÃO SIMBIONTE / VENOM
 ========================================================== */
+
+
 
 /* ==========================================================
    SAUDAÇÃO DINÂMICA
-   Exibe Bom dia, Boa tarde ou Boa noite.
 ========================================================== */
 
-const greeting = document.getElementById("greeting");
-const hour = new Date().getHours();
 
-if (hour < 12) {
-    greeting.textContent = "☀️ Bom dia! Seja bem-vindo(a).";
-} else if (hour < 18) {
-    greeting.textContent = "🌤 Boa tarde! Esperamos que seu dia esteja ótimo.";
-} else {
-    greeting.textContent = "🌙 Boa noite! Cuide de você.";
+const greeting =
+document.getElementById("greeting");
+
+
+
+const hour =
+new Date().getHours();
+
+
+
+if(hour < 12){
+
+    greeting.textContent =
+    "☀️ Bom dia! Cuide da sua mente.";
+
 }
+
+else if(hour < 18){
+
+    greeting.textContent =
+    "🌤 Boa tarde! Você está evoluindo.";
+
+}
+
+else{
+
+    greeting.textContent =
+    "🌙 Boa noite! Descanse e se cuide.";
+
+}
+
+
+
+
 
 /* ==========================================================
    CARROSSEL AUTOMÁTICO
 ========================================================== */
 
-const slides = document.querySelectorAll(".slide");
+
+const slides =
+document.querySelectorAll(".slide");
+
+
 let currentSlide = 0;
 
-function changeSlide() {
 
-    slides[currentSlide].classList.remove("active");
+
+function changeSlide(){
+
+
+    if(slides.length === 0)
+        return;
+
+
+
+    slides[currentSlide]
+    .classList
+    .remove("active");
+
+
 
     currentSlide++;
 
-    if (currentSlide >= slides.length) {
+
+
+    if(currentSlide >= slides.length){
+
         currentSlide = 0;
+
     }
 
-    slides[currentSlide].classList.add("active");
+
+
+    slides[currentSlide]
+    .classList
+    .add("active");
+
 
 }
 
-setInterval(changeSlide, 4000);
+
+
+setInterval(changeSlide,4000);
+
+
+
+
+
+
 
 /* ==========================================================
-   AUMENTAR E DIMINUIR FONTE
+   PARTÍCULAS SIMBIONTE
 ========================================================== */
+
+
+const particles =
+document.getElementById("particles");
+
+
+
+if(particles){
+
+
+for(let i=0;i<100;i++){
+
+
+    const particle =
+    document.createElement("div");
+
+
+    particle.className =
+    "particle";
+
+
+
+    particle.style.left =
+    Math.random()*100+"%";
+
+
+
+    particle.style.animationDelay =
+    Math.random()*10+"s";
+
+
+
+    particle.style.animationDuration =
+    (5+Math.random()*10)+"s";
+
+
+
+    particle.style.background =
+    Math.random()>0.5
+    ?
+    "#ff0000"
+    :
+    "#ffffff";
+
+
+
+    particles.appendChild(particle);
+
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================================
+   TAMANHO DA FONTE
+========================================================== */
+
 
 let fontSize = 100;
 
-document
-    .getElementById("increaseFont")
-    .addEventListener("click", () => {
 
-        if (fontSize < 150) {
 
-            fontSize += 10;
+const increaseFont =
+document.getElementById("increaseFont");
 
-            document.body.style.fontSize = fontSize + "%";
-        }
+const decreaseFont =
+document.getElementById("decreaseFont");
 
-    });
 
-document
-    .getElementById("decreaseFont")
-    .addEventListener("click", () => {
 
-        if (fontSize > 80) {
+if(increaseFont){
 
-            fontSize -= 10;
 
-            document.body.style.fontSize = fontSize + "%";
-        }
+increaseFont.onclick = ()=>{
 
-    });
+
+if(fontSize < 160){
+
+
+fontSize +=10;
+
+
+document.body.style.fontSize =
+fontSize+"%";
+
+
+}
+
+
+};
+
+
+
+}
+
+
+
+if(decreaseFont){
+
+
+decreaseFont.onclick = ()=>{
+
+
+if(fontSize >80){
+
+
+fontSize -=10;
+
+
+document.body.style.fontSize =
+fontSize+"%";
+
+
+}
+
+
+};
+
+
+
+}
+
+
+
+
+
+
 
 /* ==========================================================
-   DARK MODE
+   MODOS VISUAIS
 ========================================================== */
 
-document
-    .getElementById("darkMode")
-    .addEventListener("click", () => {
 
-        document.body.classList.toggle("dark");
+const darkMode =
+document.getElementById("darkMode");
 
-    });
 
-/* ==========================================================
-   ALTO CONTRASTE
-========================================================== */
 
-document
-    .getElementById("contrastMode")
-    .addEventListener("click", () => {
+if(darkMode){
 
-        document.body.classList.toggle("high-contrast");
 
-    });
+darkMode.onclick = ()=>{
+
+
+document.body
+.classList
+.toggle("dark");
+
+
+};
+
+
+}
+
+
+
+
+
+const contrastMode =
+document.getElementById("contrastMode");
+
+
+
+if(contrastMode){
+
+
+contrastMode.onclick = ()=>{
+
+
+document.body
+.classList
+.toggle("high-contrast");
+
+
+};
+
+
+}
+
+
+
+
+
 
 /* ==========================================================
    SCROLL REVEAL
-   Exibe animações conforme a página é rolada.
 ========================================================== */
 
-const observer = new IntersectionObserver((entries) => {
 
-    entries.forEach(entry => {
+const observer =
+new IntersectionObserver((entries)=>{
 
-        if (entry.isIntersecting) {
 
-            entry.target.classList.add("active");
+entries.forEach(entry=>{
 
-        }
 
-    });
+if(entry.isIntersecting){
 
-}, {
-    threshold: 0.2
+
+entry.target
+.classList
+.add("active");
+
+
+}
+
+
 });
 
-document.querySelectorAll(".reveal").forEach((item) => {
 
-    observer.observe(item);
+},{
+threshold:.2
 
 });
 
+
+
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(item=>{
+
+
+observer.observe(item);
+
+
+});
 /* ==========================================================
    BOTÃO VOLTAR AO TOPO
 ========================================================== */
 
-const backToTop = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
+const backToTop =
+document.getElementById("backToTop");
 
-    if (window.scrollY > 400) {
 
-        backToTop.style.display = "block";
 
-    } else {
+if(backToTop){
 
-        backToTop.style.display = "none";
 
-    }
+window.addEventListener("scroll",()=>{
+
+
+if(window.scrollY > 400){
+
+
+backToTop.style.display="block";
+
+
+}
+
+else{
+
+
+backToTop.style.display="none";
+
+
+}
+
 
 });
 
-backToTop.addEventListener("click", () => {
 
-    window.scrollTo({
 
-        top: 0,
 
-        behavior: "smooth"
+backToTop.onclick = ()=>{
 
-    });
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
 
 });
+
+
+};
+
+
+}
+
+
+
+
+
 
 /* ==========================================================
    SELETOR DE HUMOR
 ========================================================== */
 
+
 let selectedMood = "";
 
-const moods = document.querySelectorAll(".mood");
 
-moods.forEach(button => {
 
-    button.addEventListener("click", () => {
+const moods =
+document.querySelectorAll(".mood");
 
-        moods.forEach(btn => btn.classList.remove("selected"));
 
-        button.classList.add("selected");
 
-        selectedMood = button.dataset.mood;
+moods.forEach(button=>{
 
-    });
+
+button.addEventListener("click",()=>{
+
+
+moods.forEach(btn=>{
+
+
+btn.classList.remove("selected");
+
 
 });
 
+
+
+button.classList.add("selected");
+
+
+
+selectedMood =
+button.dataset.mood;
+
+
+
+});
+
+
+
+});
+
+
+
+
+
+
+
 /* ==========================================================
-   FRASES MOTIVACIONAIS
+   FRASES DO SIMBIONTE
 ========================================================== */
+
 
 const motivationalPhrases = [
 
-    "Você é mais forte do que imagina. 💙",
 
-    "Cada pequeno passo é uma conquista. 🌻",
+"🖤 Você é mais forte do que pensa.",
 
-    "Pedir ajuda é um ato de coragem. 🤝",
 
-    "Você merece respeito e acolhimento. 💛",
+"🕷️ Até os heróis precisam pedir ajuda.",
 
-    "Dias difíceis passam. Continue acreditando em você. ✨",
 
-    "Sua saúde emocional é importante. 🌈",
+"🔥 Cada pequeno avanço é uma vitória.",
 
-    "Nunca desista de cuidar de si mesmo. ❤️"
+
+"❤️ Seus sentimentos importam.",
+
+
+"🌙 Amanhã é uma nova oportunidade.",
+
+
+"🕸️ Você não precisa enfrentar tudo sozinho."
+
+
 
 ];
+
+
+
+
+
+
 
 /* ==========================================================
    FORMULÁRIO DE APOIO
 ========================================================== */
 
-const supportForm = document.getElementById("supportForm");
 
-supportForm.addEventListener("submit", function (event) {
+const supportForm =
+document.getElementById("supportForm");
 
-    event.preventDefault();
 
-    const message = document
-        .getElementById("message")
-        .value
-        .trim();
 
-    const response = document.getElementById("supportResponse");
 
-    if (selectedMood === "") {
+if(supportForm){
 
-        response.innerHTML =
-            "<p style='color:red;'>Selecione um emoji antes de enviar.</p>";
 
-        return;
 
-    }
+supportForm.addEventListener(
+"submit",
+(event)=>{
 
-    if (message === "") {
 
-        response.innerHTML =
-            "<p style='color:red;'>Escreva uma mensagem.</p>";
+event.preventDefault();
 
-        return;
 
-    }
 
-    const randomPhrase =
-        motivationalPhrases[
-            Math.floor(Math.random() * motivationalPhrases.length)
-        ];
+const message =
+document.getElementById("message")
+.value
+.trim();
 
-    response.innerHTML = `
 
-        <div style="margin-top:25px;
-                    background:#E8F5E9;
-                    padding:20px;
-                    border-radius:10px;">
 
-            <h3>💚 Mensagem de acolhimento</h3>
+const response =
+document.getElementById("supportResponse");
 
-            <p>
 
-                Obrigado por compartilhar como você está se sentindo.
 
-            </p>
 
-            <p>
 
-                Humor selecionado:
-                <strong>${selectedMood}</strong>
+if(selectedMood===""){
 
-            </p>
 
-            <p>
 
-                "${message}"
+response.innerHTML =
+`
 
-            </p>
+<p style="color:red">
 
-            <hr>
+Escolha um sentimento primeiro.
 
-            <p>
+</p>
 
-                <strong>${randomPhrase}</strong>
+`;
 
-            </p>
+return;
 
-        </div>
 
-    `;
+}
 
-    supportForm.reset();
 
-    moods.forEach(btn => btn.classList.remove("selected"));
 
-    selectedMood = "";
+
+if(message===""){
+
+
+
+response.innerHTML =
+`
+
+<p style="color:red">
+
+Escreva uma mensagem.
+
+</p>
+
+`;
+
+return;
+
+
+}
+
+
+
+
+
+
+const phrase =
+
+motivationalPhrases[
+
+Math.floor(
+
+Math.random()
+
+*
+
+motivationalPhrases.length
+
+)
+
+];
+
+
+
+
+
+
+
+response.innerHTML =
+
+`
+
+<div class="support-card">
+
+
+<h3>
+
+🕷️ Mensagem recebida
+
+</h3>
+
+
+<p>
+
+Obrigado por compartilhar.
+
+</p>
+
+
+<p>
+
+Seu humor:
+
+<strong>
+
+${selectedMood}
+
+</strong>
+
+
+</p>
+
+
+<p>
+
+"${message}"
+
+</p>
+
+
+
+<hr>
+
+
+
+<p>
+
+<strong>
+
+${phrase}
+
+</strong>
+
+</p>
+
+
+
+</div>
+
+`;
+
+
+
+
+
+supportForm.reset();
+
+
+
+moods.forEach(btn=>{
+
+
+btn.classList.remove("selected");
+
 
 });
 
+
+
+selectedMood="";
+
+
+
+}
+
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
 /* ==========================================================
-   QUIZ
+   MOMENTO DE CALMA
 ========================================================== */
+
+
+const calmButton =
+document.getElementById("calmButton");
+
+
+
+const calmBox =
+document.getElementById("calmBox");
+
+
+
+if(calmButton){
+
+
+
+calmButton.onclick=()=>{
+
+
+calmBox
+.classList
+.toggle("active");
+
+
+};
+
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================================
+   ASSISTENTE ARANHA-APOIO
+========================================================== */
+
+
+function assistantReply(){
+
+
+
+const answers = [
+
+
+
+"🕷️ Estou aqui com você. Como posso ajudar?",
+
+
+"🖤 Respire fundo. Você está fazendo progresso.",
+
+
+"❤️ Falar sobre sentimentos é uma atitude corajosa.",
+
+
+"🌱 Pequenas mudanças criam grandes resultados.",
+
+
+"🕸️ Até o Homem-Aranha precisou de apoio algumas vezes."
+
+
+
+];
+
+
+
+const text =
+
+answers[
+
+Math.floor(
+
+Math.random()
+
+*
+
+answers.length
+
+)
+
+];
+
+
+
+
+const box =
+document.getElementById("assistantText");
+
+
+
+if(box){
+
+
+box.innerHTML=text;
+
+
+}
+
+
+
+}
+
+
+
+window.assistantReply =
+assistantReply;
+
+
+
+
+
+
+
+
+/* ==========================================================
+   EFEITO 3D NOS CARDS
+========================================================== */
+
+
+document
+.querySelectorAll(".card")
+.forEach(card=>{
+
+
+card.addEventListener(
+"mousemove",
+(e)=>{
+
+
+
+const rect =
+card.getBoundingClientRect();
+
+
+
+const x =
+e.clientX -
+rect.left;
+
+
+
+const y =
+e.clientY -
+rect.top;
+
+
+
+const rotateY =
+(x / rect.width - .5)
+*
+20;
+
+
+
+const rotateX =
+(y / rect.height - .5)
+*
+-20;
+
+
+
+
+
+card.style.transform =
+
+`
+
+rotateX(${rotateX}deg)
+
+rotateY(${rotateY}deg)
+
+translateY(-10px)
+
+`;
+
+
+
+});
+
+
+
+
+
+
+card.addEventListener(
+"mouseleave",
+()=>{
+
+
+card.style.transform="";
+
+
+});
+
+
+});
+/* ==========================================================
+   QUIZ COM PONTUAÇÃO E NÍVEL
+========================================================== */
+
 
 const answers = {
 
-    q1: "b",
-    q2: "a",
-    q3: "a",
-    q4: "a",
-    q5: "a"
+
+q1:"b",
+
+q2:"a",
+
+q3:"a",
+
+q4:"a",
+
+q5:"a"
+
 
 };
+
+
 
 const comments = {
 
-    q1:
-        "A saúde emocional influencia diretamente a concentração, a aprendizagem e a convivência escolar.",
 
-    q2:
-        "Conversar sobre sentimentos ajuda a aliviar a ansiedade e permite receber apoio.",
+q1:
+"A saúde emocional influencia diretamente o aprendizado e a convivência.",
 
-    q3:
-        "Dormir bem melhora memória, atenção e equilíbrio emocional.",
 
-    q4:
-        "Pedir ajuda demonstra coragem e maturidade emocional.",
+q2:
+"Conversar ajuda a diminuir preocupações e encontrar apoio.",
 
-    q5:
-        "A empatia fortalece o respeito e reduz conflitos na escola."
+
+q3:
+"Um bom sono melhora memória, atenção e equilíbrio emocional.",
+
+
+q4:
+"Pedir ajuda demonstra coragem e maturidade.",
+
+
+q5:
+"A empatia melhora os relacionamentos e reduz conflitos."
+
+
 
 };
 
+
+
+
+
+const showResult =
+document.getElementById("showResult");
+
+
+
+
+if(showResult){
+
+
+
+showResult.onclick=()=>{
+
+
+let score=0;
+
+
+let explanation=
+"<h3>🕷️ Gabarito Comentado</h3>";
+
+
+
+
+
+for(let question in answers){
+
+
+
+const selected =
+
+document.querySelector(
+
+`input[name="${question}"]:checked`
+
+);
+
+
+
+
+if(selected){
+
+
+
+if(selected.value === answers[question]){
+
+
+score++;
+
+
+selected.parentElement.style.color=
+"lime";
+
+
+}
+
+else{
+
+
+selected.parentElement.style.color=
+"red";
+
+
+}
+
+
+
+}
+
+
+
+
+
+explanation +=
+
+
+`
+
+<p>
+
+<strong>
+
+${question.toUpperCase()}
+
+</strong>
+
+
+<br>
+
+✔ Resposta correta:
+
+<strong>
+
+${answers[question].toUpperCase()}
+
+</strong>
+
+
+</p>
+
+
+<p>
+
+${comments[question]}
+
+</p>
+
+
+<hr>
+
+
+`;
+
+
+
+}
+
+
+
+
+
+let level = "";
+
+
+
+if(score===5){
+
+
+level =
+"🕷️ Nível Herói da Mente";
+
+
+}
+
+else if(score>=3){
+
+
+level =
+"🔥 Nível Aprendiz do Controle";
+
+
+}
+
+else{
+
+
+level =
+"🖤 Nível Iniciante Simbionte";
+
+
+}
+
+
+
+
+
+
+
 document
-    .getElementById("showResult")
-    .addEventListener("click", () => {
+.getElementById("quizResult")
+.innerHTML =
 
-        let score = 0;
 
-        let explanation = "<h3>Gabarito Comentado</h3>";
+`
 
-        for (let question in answers) {
+<h2>
 
-            const selected =
-                document.querySelector(
-                    `input[name="${question}"]:checked`
-                );
+Você acertou ${score}/5
 
-            if (selected) {
+</h2>
 
-                if (selected.value === answers[question]) {
 
-                    score++;
+<h3>
 
-                    selected.parentElement.style.color = "green";
+${level}
 
-                } else {
+</h3>
 
-                    selected.parentElement.style.color = "red";
 
-                }
+`;
 
-            }
 
-            explanation += `
 
-                <p>
 
-                    <strong>${question.toUpperCase()}</strong>
 
-                    ✔ Resposta correta:
-                    <strong>${answers[question].toUpperCase()}</strong>
 
-                </p>
+document
+.getElementById("answerKey")
+.innerHTML =
+explanation;
 
-                <p>
 
-                    ${comments[question]}
 
-                </p>
 
-                <hr>
+};
 
-            `;
 
-        }
 
-        document.getElementById("quizResult").innerHTML =
+}
 
-            `<h2>Você acertou ${score} de 5 perguntas.</h2>`;
 
-        document.getElementById("answerKey").innerHTML = explanation;
 
-    });
+
+
+
+
+
 
 /* ==========================================================
    DATA ATUAL
 ========================================================== */
 
-const today = new Date();
 
-document.getElementById("year").textContent = today.getFullYear();
+const today =
+new Date();
 
-document.getElementById("currentDate").textContent =
-    today.toLocaleDateString("pt-BR");
+
+
+const year =
+document.getElementById("year");
+
+
+
+const currentDate =
+document.getElementById("currentDate");
+
+
+
+
+if(year){
+
+
+year.textContent =
+today.getFullYear();
+
+
+}
+
+
+
+if(currentDate){
+
+
+currentDate.textContent =
+
+today.toLocaleDateString(
+"pt-BR"
+);
+
+
+}
+
+
+
+
+
+
+
+
 
 /* ==========================================================
    CONTADOR DE VISITAS
 ========================================================== */
 
-let visits = localStorage.getItem("portalVisits");
 
-if (visits === null) {
+let visits =
 
-    visits = 1;
+localStorage.getItem(
+"portalVisits"
+);
 
-} else {
 
-    visits = Number(visits) + 1;
+
+if(visits===null){
+
+
+visits=1;
+
 
 }
 
-localStorage.setItem("portalVisits", visits);
+else{
 
-document.getElementById("visitCounter").textContent = visits;
+
+visits =
+Number(visits)+1;
+
+
+}
+
+
+
+localStorage.setItem(
+
+"portalVisits",
+
+visits
+
+);
+
+
+
+
+
+const visitCounter =
+document.getElementById("visitCounter");
+
+
+
+if(visitCounter){
+
+
+visitCounter.textContent =
+visits;
+
+
+}
+
+
+
+
+
+
+
+
+
 
 /* ==========================================================
-   FEEDBACK VISUAL DAS ALTERNATIVAS
-========================================================== */
-
-document.querySelectorAll("input[type='radio']").forEach(option => {
-
-    option.addEventListener("change", () => {
-
-        const group =
-            document.querySelectorAll(
-                `input[name="${option.name}"]`
-            );
-
-        group.forEach(item => {
-
-            item.parentElement.style.fontWeight = "normal";
-
-            item.parentElement.style.background = "transparent";
-
-        });
-
-        option.parentElement.style.fontWeight = "bold";
-
-        option.parentElement.style.background = "#E3F2FD";
-
-        option.parentElement.style.padding = "8px";
-
-        option.parentElement.style.borderRadius = "8px";
-
-    });
-
-});
-/* ==========================================================
-   ABRIR MENU DE CONFIGURAÇÕES
+   MENU DE CONFIGURAÇÕES
 ========================================================== */
 
 
-const settingsButton = document.getElementById("settingsButton");
+const settingsButton =
+document.getElementById("settingsButton");
+
+
 
 const accessibilityPanel =
 document.getElementById("accessibilityPanel");
 
 
-settingsButton.addEventListener("click", () => {
 
 
-    accessibilityPanel.classList.toggle("active");
+if(settingsButton){
+
+
+
+settingsButton.onclick=()=>{
+
+
+accessibilityPanel
+.classList
+.toggle("active");
+
+
+};
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   FEEDBACK NAS RESPOSTAS DO QUIZ
+========================================================== */
+
+
+document
+.querySelectorAll(
+"input[type='radio']"
+)
+.forEach(option=>{
+
+
+option.addEventListener(
+"change",
+()=>{
+
+
+const group =
+
+document.querySelectorAll(
+
+`input[name="${option.name}"]`
+
+);
+
+
+
+group.forEach(item=>{
+
+
+item.parentElement.style.fontWeight=
+"normal";
+
+
+item.parentElement.style.background=
+"transparent";
 
 
 });
 
+
+
+
+
+
+option.parentElement.style.fontWeight=
+"bold";
+
+
+
+option.parentElement.style.background=
+"rgba(255,0,0,.15)";
+
+
+
+option.parentElement.style.padding=
+"10px";
+
+
+option.parentElement.style.borderRadius=
+"10px";
+
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
 /* ==========================================================
-   FIM DO SCRIPT
+   SOM DE INTERAÇÃO
 ========================================================== */
-```
+
+
+const clickSound =
+
+new Audio(
+
+"https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"
+
+);
+
+
+
+
+
+document
+.querySelectorAll("button")
+.forEach(button=>{
+
+
+button.addEventListener(
+"click",
+()=>{
+
+
+clickSound.currentTime=0;
+
+
+clickSound.play()
+.catch(()=>{});
+
+
+});
+
+
+});
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   EFEITO DE ENERGIA SIMBIONTE NO MOUSE
+========================================================== */
+
+
+document.addEventListener(
+"mousemove",
+(e)=>{
+
+
+const glow =
+document.createElement("span");
+
+
+
+glow.className=
+"mouse-glow";
+
+
+
+glow.style.left =
+e.pageX+"px";
+
+
+glow.style.top =
+e.pageY+"px";
+
+
+
+document.body.appendChild(glow);
+
+
+
+
+setTimeout(()=>{
+
+
+glow.remove();
+
+
+},600);
+
+
+
+});
+
+
+
+
+
+
+
+
+
+/* ==========================================================
+   FINALIZAÇÃO
+========================================================== */
+
+
+console.log(
+
+"🕷️ Portal Saúde Emocional carregado com energia simbionte."
+
+);
