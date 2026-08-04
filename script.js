@@ -1,791 +1,457 @@
-// ==========================================
-// PORTAL DE APOIO AO ESTUDANTE
-// script.js
-// ==========================================
+# `script.js`
 
+```javascript
+/* ==========================================================
+   PORTAL DE SAÚDE EMOCIONAL
+   Todas as funções estão comentadas para facilitar o estudo.
+========================================================== */
 
+/* ==========================================================
+   SAUDAÇÃO DINÂMICA
+   Exibe Bom dia, Boa tarde ou Boa noite.
+========================================================== */
 
-// ==============================
-// CARROSSEL DE IMAGENS
-// ==============================
+const greeting = document.getElementById("greeting");
+const hour = new Date().getHours();
 
+if (hour < 12) {
+    greeting.textContent = "☀️ Bom dia! Seja bem-vindo(a).";
+} else if (hour < 18) {
+    greeting.textContent = "🌤 Boa tarde! Esperamos que seu dia esteja ótimo.";
+} else {
+    greeting.textContent = "🌙 Boa noite! Cuide de você.";
+}
 
-const imagens = [
+/* ==========================================================
+   CARROSSEL AUTOMÁTICO
+========================================================== */
 
-    "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200",
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
 
-    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200",
+function changeSlide() {
 
-    "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200",
+    slides[currentSlide].classList.remove("active");
 
-    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200"
+    currentSlide++;
 
-];
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
 
-
-let indice = 0;
-
-const slide = document.getElementById("slide");
-
-
-if(slide){
-
-
-    setInterval(()=>{
-
-
-        indice++;
-
-
-        if(indice >= imagens.length){
-
-            indice = 0;
-
-        }
-
-
-        slide.src = imagens[indice];
-
-
-    },4000);
-
+    slides[currentSlide].classList.add("active");
 
 }
 
+setInterval(changeSlide, 4000);
 
+/* ==========================================================
+   AUMENTAR E DIMINUIR FONTE
+========================================================== */
 
+let fontSize = 100;
 
+document
+    .getElementById("increaseFont")
+    .addEventListener("click", () => {
 
-// ==============================
-// DARK MODE
-// ==============================
+        if (fontSize < 150) {
 
+            fontSize += 10;
 
-const dark = document.getElementById("dark");
+            document.body.style.fontSize = fontSize + "%";
+        }
 
+    });
 
-if(dark){
+document
+    .getElementById("decreaseFont")
+    .addEventListener("click", () => {
 
+        if (fontSize > 80) {
 
-    dark.addEventListener("click",()=>{
+            fontSize -= 10;
 
+            document.body.style.fontSize = fontSize + "%";
+        }
+
+    });
+
+/* ==========================================================
+   DARK MODE
+========================================================== */
+
+document
+    .getElementById("darkMode")
+    .addEventListener("click", () => {
 
         document.body.classList.toggle("dark");
 
+    });
 
-        localStorage.setItem(
+/* ==========================================================
+   ALTO CONTRASTE
+========================================================== */
 
-            "dark",
+document
+    .getElementById("contrastMode")
+    .addEventListener("click", () => {
 
-            document.body.classList.contains("dark")
-
-        );
-
+        document.body.classList.toggle("high-contrast");
 
     });
 
+/* ==========================================================
+   SCROLL REVEAL
+   Exibe animações conforme a página é rolada.
+========================================================== */
 
-}
+const observer = new IntersectionObserver((entries) => {
 
+    entries.forEach(entry => {
 
+        if (entry.isIntersecting) {
 
-if(localStorage.getItem("dark") === "true"){
-
-    document.body.classList.add("dark");
-
-}
-
-
-
-
-
-
-
-// ==============================
-// ALTO CONTRASTE
-// ==============================
-
-
-const contraste = document.getElementById("contraste");
-
-
-
-if(contraste){
-
-
-    contraste.addEventListener("click",()=>{
-
-
-        document.body.classList.toggle("contraste");
-
-
-        localStorage.setItem(
-
-            "contraste",
-
-            document.body.classList.contains("contraste")
-
-        );
-
-
-    });
-
-
-}
-
-
-
-if(localStorage.getItem("contraste") === "true"){
-
-    document.body.classList.add("contraste");
-
-}
-
-
-
-
-
-
-
-// ==============================
-// TAMANHO DA FONTE
-// ==============================
-
-
-let tamanho = Number(
-
-    localStorage.getItem("fonte")
-
-) || 16;
-
-
-
-document.body.style.fontSize = tamanho + "px";
-
-
-
-const aumentar = document.getElementById("fonteMais");
-
-const diminuir = document.getElementById("fonteMenos");
-
-
-
-
-if(aumentar){
-
-
-    aumentar.addEventListener("click",()=>{
-
-
-        if(tamanho < 30){
-
-
-            tamanho += 2;
-
-
-            document.body.style.fontSize =
-            tamanho + "px";
-
-
-            salvarFonte();
-
+            entry.target.classList.add("active");
 
         }
 
-
     });
 
+}, {
+    threshold: 0.2
+});
 
-}
+document.querySelectorAll(".reveal").forEach((item) => {
 
-
-
-
-if(diminuir){
-
-
-    diminuir.addEventListener("click",()=>{
-
-
-        if(tamanho > 12){
-
-
-            tamanho -= 2;
-
-
-            document.body.style.fontSize =
-            tamanho + "px";
-
-
-            salvarFonte();
-
-
-        }
-
-
-    });
-
-
-}
-
-
-
-
-
-function salvarFonte(){
-
-
-    localStorage.setItem(
-
-        "fonte",
-
-        tamanho
-
-    );
-
-
-}
-
-
-
-
-
-
-
-
-// ==============================
-// SAUDAÇÃO
-// ==============================
-
-
-const saudacao = document.getElementById("saudacao");
-
-
-if(saudacao){
-
-
-    let hora = new Date().getHours();
-
-
-    let texto;
-
-
-    if(hora < 12){
-
-        texto = "Bom dia!";
-
-    }
-
-    else if(hora < 18){
-
-        texto = "Boa tarde!";
-
-    }
-
-    else{
-
-        texto = "Boa noite!";
-
-    }
-
-
-    saudacao.innerHTML = texto;
-
-
-}
-
-
-
-
-
-
-
-// ==============================
-// DATA ATUAL
-// ==============================
-
-
-const data = document.getElementById("data");
-
-
-if(data){
-
-
-    data.innerHTML =
-
-    "Data: " +
-
-    new Date().toLocaleDateString("pt-BR");
-
-
-}
-
-
-
-
-
-
-
-
-// ==============================
-// CONTADOR DE VISITAS
-// ==============================
-
-
-const contador = document.getElementById("contador");
-
-
-
-let visitas =
-
-Number(localStorage.getItem("visitas")) || 0;
-
-
-
-visitas++;
-
-
-
-localStorage.setItem(
-
-    "visitas",
-
-    visitas
-
-);
-
-
-
-if(contador){
-
-
-    contador.innerHTML =
-
-    "Visitas nesta página: " + visitas;
-
-
-}
-
-
-
-
-
-
-
-// ==============================
-// BOTÃO VOLTAR AO TOPO
-// ==============================
-
-
-const topo = document.getElementById("topo");
-
-
-
-window.addEventListener("scroll",()=>{
-
-
-    if(!topo) return;
-
-
-    if(window.scrollY > 300){
-
-
-        topo.style.display="block";
-
-
-    }
-
-    else{
-
-
-        topo.style.display="none";
-
-
-    }
-
+    observer.observe(item);
 
 });
 
+/* ==========================================================
+   BOTÃO VOLTAR AO TOPO
+========================================================== */
 
+const backToTop = document.getElementById("backToTop");
 
+window.addEventListener("scroll", () => {
 
+    if (window.scrollY > 400) {
 
-if(topo){
+        backToTop.style.display = "block";
 
+    } else {
 
-    topo.addEventListener("click",()=>{
+        backToTop.style.display = "none";
 
-
-        window.scrollTo({
-
-            top:0,
-
-            behavior:"smooth"
-
-        });
-
-
-    });
-
-
-}
-
-
-
-
-
-
-
-// ==============================
-// ANIMAÇÃO DOS CARDS
-// ==============================
-
-
-const cards = document.querySelectorAll(".card");
-
-
-
-const observer = new IntersectionObserver((entradas)=>{
-
-
-    entradas.forEach((entrada)=>{
-
-
-        if(entrada.isIntersecting){
-
-
-            entrada.target.classList.add("show");
-
-
-        }
-
-
-    });
-
+    }
 
 });
 
+backToTop.addEventListener("click", () => {
 
+    window.scrollTo({
 
-cards.forEach((card)=>{
+        top: 0,
 
+        behavior: "smooth"
 
-    observer.observe(card);
-
+    });
 
 });
 
+/* ==========================================================
+   SELETOR DE HUMOR
+========================================================== */
 
+let selectedMood = "";
 
+const moods = document.querySelectorAll(".mood");
 
+moods.forEach(button => {
 
+    button.addEventListener("click", () => {
 
+        moods.forEach(btn => btn.classList.remove("selected"));
 
+        button.classList.add("selected");
 
+        selectedMood = button.dataset.mood;
 
-// ==============================
-// PORTAL DE ESCUTA
-// ==============================
+    });
 
+});
 
-const frases = [
+/* ==========================================================
+   FRASES MOTIVACIONAIS
+========================================================== */
 
+const motivationalPhrases = [
 
-    "Você é importante.",
+    "Você é mais forte do que imagina. 💙",
 
+    "Cada pequeno passo é uma conquista. 🌻",
 
-    "Pedir ajuda demonstra coragem.",
+    "Pedir ajuda é um ato de coragem. 🤝",
 
+    "Você merece respeito e acolhimento. 💛",
 
-    "Você merece respeito.",
+    "Dias difíceis passam. Continue acreditando em você. ✨",
 
+    "Sua saúde emocional é importante. 🌈",
 
-    "Seus sentimentos importam.",
-
-
-    "Sempre existe alguém disposto a ouvir."
-
-
+    "Nunca desista de cuidar de si mesmo. ❤️"
 
 ];
 
+/* ==========================================================
+   FORMULÁRIO DE APOIO
+========================================================== */
 
+const supportForm = document.getElementById("supportForm");
 
+supportForm.addEventListener("submit", function (event) {
 
+    event.preventDefault();
 
-const formulario = document.getElementById("formEscuta");
+    const message = document
+        .getElementById("message")
+        .value
+        .trim();
 
+    const response = document.getElementById("supportResponse");
 
+    if (selectedMood === "") {
 
+        response.innerHTML =
+            "<p style='color:red;'>Selecione um emoji antes de enviar.</p>";
 
+        return;
 
-if(formulario){
+    }
 
+    if (message === "") {
 
-    formulario.addEventListener("submit",(e)=>{
+        response.innerHTML =
+            "<p style='color:red;'>Escreva uma mensagem.</p>";
 
+        return;
 
-        e.preventDefault();
+    }
 
+    const randomPhrase =
+        motivationalPhrases[
+            Math.floor(Math.random() * motivationalPhrases.length)
+        ];
 
+    response.innerHTML = `
 
-        const mensagem = document.getElementById("mensagem");
+        <div style="margin-top:25px;
+                    background:#E8F5E9;
+                    padding:20px;
+                    border-radius:10px;">
 
-        const frase = document.getElementById("frase");
+            <h3>💚 Mensagem de acolhimento</h3>
 
+            <p>
 
+                Obrigado por compartilhar como você está se sentindo.
 
-        formulario.reset();
+            </p>
 
+            <p>
 
+                Humor selecionado:
+                <strong>${selectedMood}</strong>
 
+            </p>
 
-        if(mensagem){
+            <p>
 
+                "${message}"
 
-            mensagem.innerHTML =
+            </p>
 
-            `Obrigado por compartilhar.
+            <hr>
 
-            <br><br>
+            <p>
 
-            Você não está sozinho.
+                <strong>${randomPhrase}</strong>
 
-            <br><br>
+            </p>
 
-            Procure professores, familiares ou pessoas de confiança quando precisar de apoio.`;
+        </div>
 
+    `;
 
-        }
+    supportForm.reset();
 
+    moods.forEach(btn => btn.classList.remove("selected"));
 
+    selectedMood = "";
 
+});
 
-        if(frase){
+/* ==========================================================
+   QUIZ
+========================================================== */
 
+const answers = {
 
-            let aleatoria =
+    q1: "b",
+    q2: "a",
+    q3: "a",
+    q4: "a",
+    q5: "a"
 
-            Math.floor(
+};
 
-                Math.random()*frases.length
+const comments = {
 
-            );
+    q1:
+        "A saúde emocional influencia diretamente a concentração, a aprendizagem e a convivência escolar.",
 
+    q2:
+        "Conversar sobre sentimentos ajuda a aliviar a ansiedade e permite receber apoio.",
 
+    q3:
+        "Dormir bem melhora memória, atenção e equilíbrio emocional.",
 
-            frase.innerHTML = frases[aleatoria];
+    q4:
+        "Pedir ajuda demonstra coragem e maturidade emocional.",
 
+    q5:
+        "A empatia fortalece o respeito e reduz conflitos na escola."
 
-        }
+};
 
+document
+    .getElementById("showResult")
+    .addEventListener("click", () => {
 
-    });
+        let score = 0;
 
+        let explanation = "<h3>Gabarito Comentado</h3>";
 
-}
+        for (let question in answers) {
 
+            const selected =
+                document.querySelector(
+                    `input[name="${question}"]:checked`
+                );
 
+            if (selected) {
 
+                if (selected.value === answers[question]) {
 
+                    score++;
 
+                    selected.parentElement.style.color = "green";
 
+                } else {
 
+                    selected.parentElement.style.color = "red";
 
-
-// ==============================
-// QUIZ
-// ==============================
-
-
-
-const quiz = document.getElementById("quizForm");
-
-
-
-if(quiz){
-
-
-    quiz.addEventListener("submit",(e)=>{
-
-
-        e.preventDefault();
-
-
-
-        let pontos = 0;
-
-
-
-        const respostas = {
-
-
-            q1:"b",
-
-            q2:"b",
-
-            q3:"b",
-
-            q4:"a",
-
-            q5:"b"
-
-
-        };
-
-
-
-        for(let pergunta in respostas){
-
-
-
-            const marcada = document.querySelector(
-
-            `input[name="${pergunta}"]:checked`
-
-            );
-
-
-
-            if(marcada && marcada.value === respostas[pergunta]){
-
-
-                pontos++;
-
+                }
 
             }
 
+            explanation += `
+
+                <p>
+
+                    <strong>${question.toUpperCase()}</strong>
+
+                    ✔ Resposta correta:
+                    <strong>${answers[question].toUpperCase()}</strong>
+
+                </p>
+
+                <p>
+
+                    ${comments[question]}
+
+                </p>
+
+                <hr>
+
+            `;
 
         }
 
+        document.getElementById("quizResult").innerHTML =
 
+            `<h2>Você acertou ${score} de 5 perguntas.</h2>`;
 
-
-
-
-        let texto;
-
-
-
-        if(pontos === 5){
-
-
-            texto =
-
-            "Excelente! Você demonstrou muito conhecimento.";
-
-
-        }
-
-        else if(pontos >= 3){
-
-
-            texto =
-
-            "Muito bom! Continue aprendendo.";
-
-
-        }
-
-        else{
-
-
-            texto =
-
-            "Continue estudando. O conhecimento ajuda a melhorar o ambiente escolar.";
-
-
-        }
-
-
-
-
-
-
-
-        const resultado = document.getElementById("resultado");
-
-
-
-        if(resultado){
-
-
-            resultado.innerHTML =
-
-
-            "<h2>Resultado</h2>" +
-
-
-            "<h3>Acertos: " +
-
-            pontos +
-
-            " / 5</h3>" +
-
-
-            "<p>" +
-
-            texto +
-
-            "</p>";
-
-
-
-        }
-
+        document.getElementById("answerKey").innerHTML = explanation;
 
     });
 
+/* ==========================================================
+   DATA ATUAL
+========================================================== */
+
+const today = new Date();
+
+document.getElementById("year").textContent = today.getFullYear();
+
+document.getElementById("currentDate").textContent =
+    today.toLocaleDateString("pt-BR");
+
+/* ==========================================================
+   CONTADOR DE VISITAS
+========================================================== */
+
+let visits = localStorage.getItem("portalVisits");
+
+if (visits === null) {
+
+    visits = 1;
+
+} else {
+
+    visits = Number(visits) + 1;
 
 }
 
+localStorage.setItem("portalVisits", visits);
 
+document.getElementById("visitCounter").textContent = visits;
 
+/* ==========================================================
+   FEEDBACK VISUAL DAS ALTERNATIVAS
+========================================================== */
 
+document.querySelectorAll("input[type='radio']").forEach(option => {
 
+    option.addEventListener("change", () => {
 
+        const group =
+            document.querySelectorAll(
+                `input[name="${option.name}"]`
+            );
 
-// ==============================
-// REINICIAR QUIZ
-// ==============================
+        group.forEach(item => {
 
+            item.parentElement.style.fontWeight = "normal";
 
-const reiniciar = document.getElementById("reiniciar");
+            item.parentElement.style.background = "transparent";
 
+        });
 
+        option.parentElement.style.fontWeight = "bold";
 
-if(reiniciar){
+        option.parentElement.style.background = "#E3F2FD";
 
+        option.parentElement.style.padding = "8px";
 
-    reiniciar.addEventListener("click",()=>{
-
-
-        if(quiz){
-
-
-            quiz.reset();
-
-
-        }
-
-
-
-        const resultado =
-
-        document.getElementById("resultado");
-
-
-
-        if(resultado){
-
-
-            resultado.innerHTML="";
-
-
-        }
-
+        option.parentElement.style.borderRadius = "8px";
 
     });
 
+});
 
-}
+/* ==========================================================
+   FIM DO SCRIPT
+========================================================== */
+```

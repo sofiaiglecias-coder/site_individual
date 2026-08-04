@@ -1,345 +1,494 @@
+# `index.html`
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Apoio ao Estudante | Saúde Emocional</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
-<title>Portal de Apoio ao Estudante</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 
 <body>
 
+    <!-- =======================
+         BARRA DE ACESSIBILIDADE
+    ======================== -->
 
-<header>
+    <div class="accessibility-bar">
 
-<h1>🎓 Portal de Apoio ao Estudante</h1>
+        <button id="increaseFont">
+            A+
+        </button>
 
-<p id="saudacao"></p>
+        <button id="decreaseFont">
+            A-
+        </button>
 
-<nav>
+        <button id="darkMode">
+            🌙 Dark
+        </button>
 
-<button id="dark">🌙 Dark Mode</button>
+        <button id="contrastMode">
+            ⚫ Alto Contraste
+        </button>
 
-<button id="contraste">🔳 Contraste</button>
+    </div>
 
-<button id="fonteMais">A+</button>
+    <!-- =======================
+          HEADER
+    ======================== -->
 
-<button id="fonteMenos">A-</button>
+    <header>
 
-</nav>
+        <div class="logo">
 
-</header>
+            <h1>
+                Portal Saúde Emocional
+            </h1>
 
+            <p id="greeting"></p>
 
+        </div>
 
-<section class="carrossel">
+        <nav>
 
-<img 
-id="slide"
-src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200"
-alt="Estudantes">
+            <ul>
 
-</section>
+                <li><a href="#inicio">Início</a></li>
 
+                <li><a href="#sobre">Sobre</a></li>
 
+                <li><a href="#cards">Orientações</a></li>
 
+                <li><a href="#apoio">Espaço de Apoio</a></li>
 
-<section class="sobre card">
+                <li><a href="#quiz">Quiz</a></li>
 
+            </ul>
 
-<h2>Bem-vindo!</h2>
+        </nav>
 
+    </header>
 
-<p>
-Este portal foi criado para oferecer apoio,
-informação e ferramentas para ajudar estudantes
-em sua jornada escolar.
-</p>
+    <!-- =======================
+          CARROSSEL
+    ======================== -->
 
+    <section id="inicio" class="carousel">
 
-</section>
+        <div class="slides">
 
+            <div class="slide active">
 
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1400&q=80">
 
+                <div class="caption">
 
+                    <h2>
+                        Cuidar da mente também é aprender.
+                    </h2>
 
-<section class="cards">
+                </div>
 
+            </div>
 
-<div class="card">
+            <div class="slide">
 
-<h2>📚 Estudos</h2>
+                <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1400&q=80">
 
-<p>
-Organize sua rotina, desenvolva hábitos de estudo
-e busque sempre novos conhecimentos.
-</p>
+                <div class="caption">
 
-</div>
+                    <h2>
+                        Falar sobre sentimentos é um ato de coragem.
+                    </h2>
 
+                </div>
 
+            </div>
 
-<div class="card">
+            <div class="slide">
 
-<h2>💬 Apoio emocional</h2>
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80">
 
-<p>
-Conversar sobre sentimentos e dificuldades
-é importante para o bem-estar.
-</p>
+                <div class="caption">
 
-</div>
+                    <h2>
+                        A escola também é um espaço de acolhimento.
+                    </h2>
 
+                </div>
 
+            </div>
 
+        </div>
 
-<div class="card">
+    </section>
 
-<h2>🤝 Respeito</h2>
+    <!-- =======================
+          SOBRE
+    ======================== -->
 
-<p>
-Um ambiente escolar saudável começa com empatia,
-respeito e diálogo.
-</p>
+    <section id="sobre" class="section reveal">
 
-</div>
+        <h2>Sobre o Portal</h2>
 
+        <p>
 
-</section>
+            A saúde emocional é fundamental para o desenvolvimento dos estudantes.
+            Quando aprendemos a reconhecer nossos sentimentos, lidar com desafios e
+            pedir ajuda quando necessário, criamos um ambiente escolar mais saudável,
+            respeitoso e acolhedor.
 
+        </p>
 
+        <p>
 
+            Este portal foi desenvolvido para incentivar o autocuidado, fortalecer
+            a empatia, combater o preconceito relacionado à saúde mental e oferecer
+            orientações simples que podem fazer a diferença no dia a dia.
 
+        </p>
 
+    </section>
 
+    <!-- =======================
+          CARDS
+    ======================== -->
 
-<section class="escuta card">
+    <section id="cards" class="section">
 
+        <h2 class="reveal">
+            Orientações Importantes
+        </h2>
 
-<h2>💙 Portal de Escuta</h2>
+        <div class="cards">
 
+            <article class="card reveal">
 
-<p>
-Compartilhe como você está se sentindo.
-</p>
+                <i class="fa-solid fa-heart"></i>
 
+                <h3>
+                    Conheça suas emoções
+                </h3>
 
-<form id="formEscuta">
+                <p>
 
+                    Reconhecer alegria, medo, ansiedade ou tristeza ajuda a compreender
+                    melhor nossas reações e facilita a busca por apoio quando necessário.
 
-<input 
-type="text"
-id="nome"
-placeholder="Seu nome">
+                </p>
 
+            </article>
 
-<textarea
-id="sentimento"
-placeholder="Escreva seus sentimentos..."
-required></textarea>
+            <article class="card reveal">
 
+                <i class="fa-solid fa-comments"></i>
 
+                <h3>
+                    Converse com alguém
+                </h3>
 
-<button type="submit">
-Enviar
-</button>
+                <p>
 
+                    Compartilhar sentimentos com familiares, professores, amigos ou
+                    profissionais pode aliviar preocupações e ajudar na resolução
+                    de dificuldades.
 
-</form>
+                </p>
 
+            </article>
 
-<div id="mensagem"></div>
+            <article class="card reveal">
 
+                <i class="fa-solid fa-seedling"></i>
 
-<h3 id="frase"></h3>
+                <h3>
+                    Cuide de você
+                </h3>
 
+                <p>
 
-</section>
+                    Dormir bem, praticar atividades físicas, manter uma boa alimentação
+                    e reservar momentos de lazer contribuem para uma mente mais saudável.
 
+                </p>
 
+            </article>
 
+        </div>
 
+    </section>
 
+    <!-- =======================
+          ESPAÇO DE APOIO
+    ======================== -->
 
+    <section id="apoio" class="section reveal">
 
+        <h2>
+            Espaço de Apoio
+        </h2>
 
+        <p>
 
-<section class="quiz card">
+            Como você está se sentindo hoje?
 
+        </p>
 
-<h2>📝 Quiz sobre convivência</h2>
+        <div class="mood-selector">
 
+            <button class="mood" data-mood="Muito Feliz">😁</button>
 
-<form id="quizForm">
+            <button class="mood" data-mood="Feliz">😊</button>
 
+            <button class="mood" data-mood="Neutro">😐</button>
 
-<p>
-1 - O diálogo ajuda a resolver conflitos?
-</p>
+            <button class="mood" data-mood="Triste">😢</button>
 
-<label>
-<input type="radio" name="q1" value="a">
-Não
-</label>
+            <button class="mood" data-mood="Muito Triste">😭</button>
 
-<label>
-<input type="radio" name="q1" value="b">
-Sim
-</label>
+        </div>
 
+        <form id="supportForm">
 
+            <textarea
+                id="message"
+                placeholder="Escreva como está se sentindo..."
+                required>
+            </textarea>
 
+            <button type="submit">
 
+                Enviar Relato
 
-<p>
-2 - Pedir ajuda quando necessário é importante?
-</p>
+            </button>
 
-<label>
-<input type="radio" name="q2" value="a">
-Não
-</label>
+        </form>
 
-<label>
-<input type="radio" name="q2" value="b">
-Sim
-</label>
+        <div id="supportResponse"></div>
 
+    </section>
 
+    <!-- =======================
+          QUIZ
+    ======================== -->
 
+    <section id="quiz" class="section reveal">
 
+        <h2>
 
-<p>
-3 - O respeito melhora o ambiente escolar?
-</p>
+            Quiz sobre Saúde Emocional
 
+        </h2>
 
-<label>
-<input type="radio" name="q3" value="a">
-Não
-</label>
+        <form id="quizForm">
 
+            <!-- Pergunta 1 -->
 
-<label>
-<input type="radio" name="q3" value="b">
-Sim
-</label>
+            <div class="question">
 
+                <h3>
 
+                    1. A saúde emocional influencia o aprendizado?
 
+                </h3>
 
+                <label>
 
-<p>
-4 - Devemos ignorar sentimentos ruins?
-</p>
+                    <input type="radio" name="q1" value="a">
 
+                    Não.
 
-<label>
-<input type="radio" name="q4" value="a">
-Não
-</label>
+                </label>
 
+                <label>
 
-<label>
-<input type="radio" name="q4" value="b">
-Sim
-</label>
+                    <input type="radio" name="q1" value="b">
 
+                    Sim.
 
+                </label>
 
+            </div>
 
+            <!-- Pergunta 2 -->
 
-<p>
-5 - A escola deve incentivar o apoio entre alunos?
-</p>
+            <div class="question">
 
+                <h3>
 
-<label>
-<input type="radio" name="q5" value="a">
-Não
-</label>
+                    2. Conversar sobre sentimentos pode ajudar?
 
+                </h3>
 
-<label>
-<input type="radio" name="q5" value="b">
-Sim
-</label>
+                <label>
 
+                    <input type="radio" name="q2" value="a">
 
+                    Sim.
 
+                </label>
 
-<br><br>
+                <label>
 
+                    <input type="radio" name="q2" value="b">
 
-<button type="submit">
-Ver resultado
-</button>
+                    Nunca.
 
+                </label>
 
-<button 
-type="button"
-id="reiniciar">
+            </div>
 
-Tentar novamente
+            <!-- Pergunta 3 -->
 
-</button>
+            <div class="question">
 
+                <h3>
 
+                    3. Dormir bem faz diferença para a saúde emocional?
 
-</form>
+                </h3>
 
+                <label>
 
+                    <input type="radio" name="q3" value="a">
 
-<div id="resultado"></div>
+                    Sim.
 
+                </label>
 
-</section>
+                <label>
 
+                    <input type="radio" name="q3" value="b">
 
+                    Não.
 
+                </label>
 
+            </div>
 
+            <!-- Pergunta 4 -->
 
+            <div class="question">
 
-<footer>
+                <h3>
 
+                    4. Pedir ajuda demonstra:
 
-<p>
-Portal de Apoio ao Estudante © 2026
-</p>
+                </h3>
 
+                <label>
 
-<p id="data"></p>
+                    <input type="radio" name="q4" value="a">
 
+                    Coragem.
 
-<p id="contador"></p>
+                </label>
 
+                <label>
 
-</footer>
+                    <input type="radio" name="q4" value="b">
 
+                    Fraqueza.
 
+                </label>
 
+            </div>
 
+            <!-- Pergunta 5 -->
 
-<button id="topo">
+            <div class="question">
 
-⬆
+                <h3>
 
-</button>
+                    5. A empatia melhora a convivência escolar?
 
+                </h3>
 
+                <label>
 
+                    <input type="radio" name="q5" value="a">
 
+                    Sim.
 
-<script src="script.js"></script>
+                </label>
 
+                <label>
+
+                    <input type="radio" name="q5" value="b">
+
+                    Não.
+
+                </label>
+
+            </div>
+
+            <button
+                type="button"
+                id="showResult">
+
+                Ver Resultado
+
+            </button>
+
+        </form>
+
+        <div id="quizResult"></div>
+
+        <div id="answerKey"></div>
+
+    </section>
+
+    <!-- =======================
+          BOTÃO TOPO
+    ======================== -->
+
+    <button id="backToTop">
+
+        ↑
+
+    </button>
+
+    <!-- =======================
+          FOOTER
+    ======================== -->
+
+    <footer>
+
+        <p>
+
+            © <span id="year"></span>
+
+            Portal Saúde Emocional
+
+        </p>
+
+        <p>
+
+            Data:
+            <span id="currentDate"></span>
+
+        </p>
+
+        <p>
+
+            Visitas:
+            <span id="visitCounter"></span>
+
+        </p>
+
+    </footer>
+
+    <script src="script.js"></script>
 
 </body>
 
 </html>
+```
