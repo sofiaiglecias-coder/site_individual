@@ -1,718 +1,567 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>
-Portal de Apoio ao Estudante | Saúde Emocional Simbionte
-</title>
-
-
-<link rel="stylesheet" href="style.css">
-
-
-<!-- Ícones -->
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONEXÃO | Portal de Apoio ao Estudante</title>
+    <meta name="description" content="Informação, orientação e acolhimento para lidar com cyberbullying e segurança digital no ambiente escolar.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
-
-<!-- ==================================================
-     ELEMENTOS INTERATIVOS VENOM
-================================================== -->
-
-
-<div id="particles"></div>
-
-
-<div id="venomEyes">
-
-    <span></span>
-
-    <span></span>
-
-</div>
-
-
-
-<!-- ==================================================
-     BOTÃO CONFIGURAÇÕES
-================================================== -->
-
-
-<button 
-id="settingsButton"
-class="settings-button">
-
-⚙️
-
-</button>
-
-
-
-
-<!-- ==================================================
-     MENU ACESSIBILIDADE
-================================================== -->
-
-
-<div 
-id="accessibilityPanel"
-class="accessibility-panel">
-
-
-<button id="increaseFont">
-
-A+
-
-</button>
-
-
-<button id="decreaseFont">
-
-A-
-
-</button>
-
-
-
-<button id="darkMode">
-
-🌙 Dark
-
-</button>
-
-
-
-<button id="contrastMode">
-
-⚫ Contraste
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-<!-- ==================================================
-     ASSISTENTE VIRTUAL
-================================================== -->
-
-
-<div id="assistant">
-
-
-<div id="assistantHeader">
-
-🕷️ Aranha-Apoio
-
-</div>
-
-
-<p id="assistantText">
-
-Olá! Como você está se sentindo hoje?
-
-</p>
-
-
-
-<button onclick="assistantReply()">
-
-Conversar
-
-</button>
-
-
-</div>
-
-
-
-
-
-<!-- ==================================================
-     MOMENTO DE CALMA
-================================================== -->
-
-
-<button id="calmButton">
-
-🕷️ Momento de Calma
-
-</button>
-
-
-
-
-<div id="calmBox">
-
-
-<h2>
-
-🖤 Respire...
-
-</h2>
-
-
-<p>
-
-Inspire lentamente e expire devagar.
-
-</p>
-
-
-
-<div id="breathingCircle"></div>
-
-
-
-<p>
-
-Sua mente também precisa de cuidado.
-
-</p>
-
-
-</div>
-
-
-
-
-
-<!-- ==================================================
-     HEADER
-================================================== -->
-
-
-<header>
-
-
-<div class="logo">
-
-
-<h1>
-
-Portal Saúde Emocional
-
-</h1>
-
-
-
-<p id="greeting"></p>
-
-
-</div>
-
-
-
-
-<nav>
-
-
-<ul>
-
-
-<li>
-
-<a href="#inicio">
-
-Início
-
-</a>
-
-</li>
-
-
-
-<li>
-
-<a href="#sobre">
-
-Sobre
-
-</a>
-
-</li>
-
-
-
-<li>
-
-<a href="#cards">
-
-Orientações
-
-</a>
-
-</li>
-
-
-
-<li>
-
-<a href="#apoio">
-
-Apoio
-
-</a>
-
-</li>
-
-
-
-<li>
-
-<a href="#quiz">
-
-Quiz
-
-</a>
-
-</li>
-
-
-
-</ul>
-
-
-</nav>
-
-
-
-</header>
-<!-- ==================================================
-     CARROSSEL PRINCIPAL
-================================================== -->
-
-
-<section id="inicio" class="carousel">
-
-
-<div class="slides">
-
-
-
-<div class="slide active">
-
-
-<img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1400&q=80"
-alt="Estudantes aprendendo">
-
-
-<div class="caption">
-
-
-<h2>
-
-Cuidar da mente também é aprender.
-
-</h2>
-
-
-<p>
-
-A saúde emocional faz parte da nossa evolução.
-
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="slide">
-
-
-<img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1400&q=80"
-alt="Pessoas conversando">
-
-
-<div class="caption">
-
-
-<h2>
-
-Falar sobre sentimentos é um ato de coragem.
-
-</h2>
-
-
-<p>
-
-Compartilhar ajuda a enfrentar desafios.
-
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="slide">
-
-
-<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=80"
-alt="Ambiente escolar">
-
-
-<div class="caption">
-
-
-<h2>
-
-A escola também pode ser um lugar de acolhimento.
-
-</h2>
-
-
-<p>
-
-Respeito e empatia transformam ambientes.
-
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<!-- ==================================================
-     SOBRE O PORTAL
-================================================== -->
-
-
-<section 
-id="sobre"
-class="section reveal">
-
-
-
-<h2>
-
-Sobre o Portal
-
-</h2>
-
-
-
-<p>
-
-
-A saúde emocional é essencial para o desenvolvimento
-dos estudantes. Este espaço foi criado para incentivar
-o autoconhecimento, a empatia e o cuidado com a mente.
-
-
-</p>
-
-
-
-<p>
-
-
-Assim como um herói aprende a controlar seus poderes,
-cada pessoa pode aprender a compreender seus sentimentos
-e buscar apoio quando necessário.
-
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ==================================================
-     CARDS DE ORIENTAÇÃO
-================================================== -->
-
-
-<section 
-id="cards"
-class="section">
-
-
-
-<h2 class="reveal">
-
-Orientações Importantes
-
-</h2>
-
-
-
-
-<div class="cards">
-
-
-
-
-
-<article class="card reveal">
-
-
-<i class="fa-solid fa-heart"></i>
-
-
-
-<h3>
-
-Conheça suas emoções
-
-</h3>
-
-
-
-<p>
-
-Entender seus sentimentos ajuda a tomar decisões,
-melhorar relações e cuidar da sua saúde mental.
-
-</p>
-
-
-</article>
-
-
-
-
-
-
-
-<article class="card reveal">
-
-
-<i class="fa-solid fa-comments"></i>
-
-
-
-<h3>
-
-Converse com alguém
-
-</h3>
-
-
-
-<p>
-
-Falar sobre preocupações, medos ou dificuldades
-pode trazer alívio e novas perspectivas.
-
-</p>
-
-
-</article>
-
-
-
-
-
-
-
-<article class="card reveal">
-
-
-<i class="fa-solid fa-seedling"></i>
-
-
-
-<h3>
-
-Cuide de você
-
-</h3>
-
-
-
-<p>
-
-Sono adequado, alimentação equilibrada e momentos
-de lazer fortalecem o bem-estar emocional.
-
-</p>
-
-
-</article>
-
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ==================================================
-     ESPAÇO DE APOIO
-================================================== -->
-
-
-<section 
-id="apoio"
-class="section reveal">
-
-
-
-<h2>
-
-Espaço de Apoio
-
-</h2>
-
-
-
-<p>
-
-Escolha como você está se sentindo:
-
-</p>
-
-
-
-
-
-<div class="mood-selector">
-
-
-
-<button 
-class="mood"
-data-mood="Muito Feliz">
-
-😁
-
-</button>
-
-
-
-
-<button 
-class="mood"
-data-mood="Feliz">
-
-😊
-
-</button>
-
-
-
-
-<button 
-class="mood"
-data-mood="Neutro">
-
-😐
-
-</button>
-
-
-
-
-<button 
-class="mood"
-data-mood="Triste">
-
-😢
-
-</button>
-
-
-
-
-<button 
-class="mood"
-data-mood="Muito Triste">
-
-😭
-
-</button>
-
-
-
-
-</div>
-
-
-
-
-
-<form id="supportForm">
-
-
-<textarea
-id="message"
-placeholder="Escreva como você está se sentindo..."
-required></textarea>
-
-
-
-
-<button type="submit">
-
-Enviar Relato
-
-</button>
-
-
-
-</form>
-
-
-
-
-
-<div id="supportResponse"></div>
-
-
-
-
-</section>
+    <!-- Acessibilidade e Utilidades Topo -->
+    <div class="accessibility-bar" aria-label="Ferramentas de Acessibilidade">
+        <div class="container accessibility-content">
+            <span class="accessibility-title"><i class="fa-solid fa-universal-access"></i> Acessibilidade:</span>
+            <div class="accessibility-controls">
+                <button id="btn-increase-font" title="Aumentar Fonte" aria-label="Aumentar tamanho do texto">A+</button>
+                <button id="btn-decrease-font" title="Diminuir Fonte" aria-label="Diminuir tamanho do texto">A-</button>
+                <button id="btn-toggle-contrast" title="Alto Contraste" aria-label="Alternar modo de alto contraste"><i class="fa-solid fa-circle-half-stroke"></i> Alto Contraste</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Principal -->
+    <header class="main-header" id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo-group nav-link" data-section="home">
+                <span class="logo-title">CONEXÃO</span>
+                <span class="logo-subtitle">Portal de Apoio ao Estudante</span>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu" aria-label="Navegação Principal">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active" data-section="home">Início</a></li>
+                    <li><a href="#cyberbullying" class="nav-link" data-section="cyberbullying">Cyberbullying</a></li>
+                    <li><a href="#seguranca" class="nav-link" data-section="seguranca">Segurança Digital</a></li>
+                    <li><a href="#escuta" class="nav-link" data-section="escuta">Portal de Escuta</a></li>
+                    <li><a href="#quiz" class="nav-link" data-section="quiz">Quiz</a></li>
+                    <li><a href="#referencias" class="nav-link" data-section="referencias">Referências</a></li>
+                    <li><a href="#contato" class="nav-link" data-section="contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#escuta" class="btn btn-primary btn-header nav-link" data-section="escuta">
+                    <i class="fa-solid fa-heart"></i> Preciso de Ajuda
+                </a>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="Abrir Menu de Navegação" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal (SPA) -->
+    <main id="main-content">
+
+        <!-- 1. SEÇÃO HOME -->
+        <section id="home" class="spa-section active">
+            <div class="hero-wrapper">
+                <div class="hero-overlay"></div>
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1600&q=80" alt="Grupo de estudantes diversos sorrindo e conversando no ambiente escolar" class="hero-bg-img">
+                
+                <div class="container hero-content">
+                    <span class="badge fade-in"><i class="fa-solid fa-shield-heart"></i> VOCÊ NÃO ESTÁ SOZINHO</span>
+                    <h1 class="hero-title fade-in">Sua segurança também importa no mundo digital.</h1>
+                    <p class="hero-text fade-in">
+                        Informação, orientação e acolhimento para ajudar você a entender o cyberbullying, proteger sua privacidade e saber quando e como pedir ajuda.
+                    </p>
+                    <div class="hero-buttons fade-in">
+                        <a href="#cyberbullying" class="btn btn-primary nav-link" data-section="cyberbullying">Quero Entender</a>
+                        <a href="#escuta" class="btn btn-secondary nav-link" data-section="escuta"><i class="fa-regular fa-comment-dots"></i> Preciso Conversar</a>
+                    </div>
+                    <div class="scroll-indicator">
+                        <span>Role para explorar</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards de Diferenciais -->
+            <div class="container section-padding">
+                <div class="grid grid-3">
+                    <div class="card feature-card">
+                        <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <h3>Informação</h3>
+                        <p>Aprenda a reconhecer situações de cyberbullying e outros riscos no ambiente digital com orientações diretas e claras.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="card-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <h3>Acolhimento</h3>
+                        <p>Você pode falar sobre o que está sentindo e procurar alguém de confiança. Seus sentimentos são válidos e importam.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <div class="card-icon"><i class="fa-solid fa-user-shield"></i></div>
+                        <h3>Segurança</h3>
+                        <p>Descubra maneiras simples e práticas de proteger seus dados, suas contas e manter sua privacidade em dia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destaque Humanizado -->
+            <div class="container section-padding-bottom">
+                <div class="card feature-highlight-grid">
+                    <div class="highlight-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Jovem utilizando um celular em um ambiente calmo e acolhedor" loading="lazy">
+                    </div>
+                    <div class="highlight-content">
+                        <span class="sub-tag">VOCÊ MERECE RESPEITO</span>
+                        <h2>Nem tudo precisa ser enfrentado sozinho.</h2>
+                        <p>Situacões de humilhação, ameaças, exposição sem consentimento ou perseguição na internet nunca devem ser vistas como algo "normal" ou simples brincadeira.</p>
+                        <p>Se algo na rede te deixa desconfortável, triste ou com medo, saiba que não é culpa sua e que existem caminhos seguros para resolver.</p>
+                        <a href="#cyberbullying" class="btn btn-primary nav-link inline-btn" data-section="cyberbullying">Saiba Como Agir</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SEÇÃO CYBERBULLYING -->
+        <section id="cyberbullying" class="spa-section">
+            <div class="container section-padding">
+                <div class="section-header">
+                    <span class="sub-tag">ENTENDENDO O TEMA</span>
+                    <h2>Entendendo o Cyberbullying</h2>
+                    <p>O cyberbullying é a prática de praticar violência psicológica, constranger, humilhar ou perseguir alguém no ambiente virtual usando redes sociais, aplicativos de mensagens ou jogos online.</p>
+                </div>
+
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="card-icon danger-icon"><i class="fa-solid fa-comment-slash"></i></div>
+                        <h3>Mensagens ofensivas</h3>
+                        <p>Uso repetido de comentários, piadas hostis ou mensagens diretas destinadas a diminuir e humilhar outra pessoa.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon danger-icon"><i class="fa-solid fa-photo-film"></i></div>
+                        <h3>Exposição</h3>
+                        <p>Compartilhamento de fotos, vídeos, prints ou informações pessoais sem autorização da pessoa envolvida.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon danger-icon"><i class="fa-solid fa-user-ninja"></i></div>
+                        <h3>Perfis falsos</h3>
+                        <p>Criação de contas fakes ou personificação de alguém para ridicularizar, espalhar boatos ou causar prejuízos.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon danger-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <h3>Ameaças</h3>
+                        <p>Envio de mensagens com o objetivo de causar medo, chantagear ou intimidar a vítima de forma persistente.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon danger-icon"><i class="fa-solid fa-user-group"></i></div>
+                        <h3>Exclusão</h3>
+                        <p>Remoção intencional ou isolamento planejado de uma pessoa em grupos virtuais para causar rejeição social.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon danger-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h3>Humilhação pública</h3>
+                        <p>Publicações em fóruns, canais ou páginas abertas criadas especificamente com o foco de expor alguém ao ridículo.</p>
+                    </div>
+                </div>
+
+                <!-- Como Agir -->
+                <div class="action-steps-container">
+                    <div class="section-header center-header">
+                        <span class="sub-tag">GUIA PRÁTICO</span>
+                        <h2>Aconteceu com você? Respire. Existe um caminho.</h2>
+                    </div>
+
+                    <div class="steps-wrapper">
+                        <div class="step-card">
+                            <span class="step-num">01</span>
+                            <div class="step-info">
+                                <h3>Não responda no impulso</h3>
+                                <p>Reagir sob o impacto da raiva ou da tristeza pode aumentar o conflito. Pare, respire e procure se afastar do dispositivo por alguns minutos.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <span class="step-num">02</span>
+                            <div class="step-info">
+                                <h3>Guarde as provas</h3>
+                                <p>Faça capturas de tela (prints) das conversas, links, fotos, perfis e comentários. Mantenha os registros com datas e horários visíveis.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <span class="step-num">03</span>
+                            <div class="step-info">
+                                <h3>Bloqueie e denuncie</h3>
+                                <p>Utilize as opções de denúncia da própria rede social ou aplicativo para reportar o abuso e bloqueie o perfil agressor imediatamente.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <span class="step-num">04</span>
+                            <div class="step-info">
+                                <h3>Conte para alguém</h3>
+                                <p>Procure um professor, pedagogo, responsável ou um adulto em quem você confie. Compartilhar a situação reduz o peso emocional.</p>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <span class="step-num">05</span>
+                            <div class="step-info">
+                                <h3>Procure ajuda</h3>
+                                <p>Você não precisa enfrentar isso sozinho. Apoiar-se nas pessoas certas faz toda a diferença para restaurar seu bem-estar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SEÇÃO SEGURANÇA DIGITAL -->
+        <section id="seguranca" class="spa-section">
+            <div class="container section-padding">
+                <div class="section-header">
+                    <span class="sub-tag">PROTEÇÃO ONLINE</span>
+                    <h2>Proteja sua vida digital</h2>
+                    <p>Pequenos hábitos diários ajudam a manter seus dados pessoais protegidos e evitam que terceiros utilizem suas informações de forma indevida.</p>
+                </div>
+
+                <div class="grid grid-3">
+                    <div class="card security-card">
+                        <div class="card-icon accent-icon"><i class="fa-solid fa-key"></i></div>
+                        <h3>Senhas Seguras</h3>
+                        <p>Crie combinações longas misturando letras maiúsculas, minúsculas, números e símbolos. Evite datas de aniversário e nomes óbvios.</p>
+                    </div>
+
+                    <div class="card security-card">
+                        <div class="card-icon accent-icon"><i class="fa-solid fa-lock"></i></div>
+                        <h3>Privacidade</h3>
+                        <p>Verifique com frequência as configurações de privacidade de suas redes sociais. Mantenha seus perfis fechados para desconhecidos.</p>
+                    </div>
+
+                    <div class="card security-card">
+                        <div class="card-icon accent-icon"><i class="fa-solid fa-share-nodes"></i></div>
+                        <h3>Redes Sociais</h3>
+                        <p>Pense duas vezes antes de publicar fotos ou localizações atuais. Aceite solicitações apenas de pessoas que você conhece na vida real.</p>
+                    </div>
+
+                    <div class="card security-card">
+                        <div class="card-icon accent-icon"><i class="fa-solid fa-fish-fins"></i></div>
+                        <h3>Links Suspeitos</h3>
+                        <p>Desconfie de links recebidos via mensagem prometendo brindes, jogos grátis ou testes. Pode ser uma tentativa de phishing.</p>
+                    </div>
+
+                    <div class="card security-card">
+                        <div class="card-icon accent-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Autenticação em Dois Fatores</h3>
+                        <p>Ative a verificação em duas etapas em todos os seus aplicativos. Essa camada extra dificulta acessos não autorizados.</p>
+                    </div>
+
+                    <div class="card security-card">
+                        <div class="card-icon accent-icon"><i class="fa-solid fa-id-card"></i></div>
+                        <h3>Dados Pessoais</h3>
+                        <p>Evite divulgar seu número de telefone, endereço, rotina ou nome da escola em comentários abertos ou fóruns públicos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SEÇÃO PORTAL DE ESCUTA -->
+        <section id="escuta" class="spa-section">
+            <div class="container section-padding">
+                <div class="escuta-wrapper">
+                    <div class="section-header center-header">
+                        <span class="sub-tag"><i class="fa-solid fa-heart"></i> ESPAÇO ACOLHEDOR</span>
+                        <h2>Quer colocar para fora?</h2>
+                        <p>Às vezes, escrever aquilo que estamos sentindo pode ser um primeiro passo importante. Este espaço é apenas uma simulação e nenhuma informação digitada aqui será salva ou enviada a servidores.</p>
+                    </div>
+
+                    <!-- Phrase Carousel -->
+                    <div class="quote-box">
+                        <i class="fa-solid fa-quote-left quote-icon"></i>
+                        <p id="motivational-quote">"Pedir ajuda é um ato de coragem."</p>
+                    </div>
+
+                    <!-- Form Container -->
+                    <div class="card form-card">
+                        <form id="listening-form" novalidate>
+                            <div class="form-group">
+                                <label for="user-name">Como prefere ser chamado? (Nome ou Apelido)</label>
+                                <input type="text" id="user-name" placeholder="Ex: Alex ou Amigo" required autocomplete="off">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="user-feeling">Como você está se sentindo hoje?</label>
+                                <select id="user-feeling" required>
+                                    <option value="" disabled selected>Selecione uma opção...</option>
+                                    <option value="bem">Estou me sentindo bem</option>
+                                    <option value="confuso">Estou confuso(a)</option>
+                                    <option value="triste">Estou chateado(a) ou triste</option>
+                                    <option value="pressionado">Me sinto pressionado(a)</option>
+                                    <option value="assustado">Estou com medo de algo online</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="user-message">Escreva seu desabafo ou pensamento:</label>
+                                <textarea id="user-message" rows="5" placeholder="Sinta-se livre para escrever. Lembre-se: este campo é um espaço de reflexão local..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i class="fa-solid fa-paper-plane"></i> Enviar Desabafo
+                            </button>
+                        </form>
+
+                        <!-- Response Screen -->
+                        <div id="listening-response" class="response-box hidden" role="alert">
+                            <div class="response-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <h3>Obrigado por confiar este momento a nós. ❤️</h3>
+                            <p class="response-main-text">O que você sente importa. Você não precisa resolver tudo sozinho.</p>
+                            <hr class="divider">
+                            <p class="response-advice">
+                                <i class="fa-solid fa-circle-info"></i> Se estiver passando por uma situação difícil, converse com um professor, familiar, pedagogo, direção da escola ou outro adulto de confiança.
+                            </p>
+                            <button id="btn-reset-form" class="btn btn-secondary">Escrever Novamente</button>
+                        </div>
+                    </div>
+
+                    <div class="disclaimer-note">
+                        <p><i class="fa-solid fa-shield-cat"></i> <strong>Nota Importante:</strong> Este portal é uma ferramenta educacional e simulação interativa de apoio. Ele não substitui atendimento psicológico, denúncia formal ou serviços médicos de emergência.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SEÇÃO QUIZ -->
+        <section id="quiz" class="spa-section">
+            <div class="container section-padding">
+                <div class="section-header center-header">
+                    <span class="sub-tag">TESTE SEUS CONHECIMENTOS</span>
+                    <h2>Quiz: Segurança & Respeito Digital</h2>
+                    <p>Responda às 5 perguntas abaixo para avaliar seu nível de atenção às boas práticas na internet.</p>
+                </div>
+
+                <div class="card quiz-card">
+                    <div id="quiz-intro">
+                        <div class="quiz-badge"><i class="fa-solid fa-graduation-cap"></i> 5 Perguntas Rápida</div>
+                        <h3>Pronto para testar o que aprendeu?</h3>
+                        <p>Descubra se você sabe reconhecer situações de risco e como agir com empatia e segurança online.</p>
+                        <button id="btn-start-quiz" class="btn btn-primary">Iniciar Quiz</button>
+                    </div>
+
+                    <div id="quiz-body" class="hidden">
+                        <div class="quiz-progress-wrapper">
+                            <div class="quiz-info-text">
+                                <span id="quiz-step-text">Pergunta 1 de 5</span>
+                                <span id="quiz-score-live">Acertos: 0</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" id="quiz-progress-fill"></div>
+                            </div>
+                        </div>
+
+                        <h3 id="quiz-question-title" class="question-title">Texto da pergunta aqui?</h3>
+
+                        <div id="quiz-options-container" class="quiz-options">
+                            <!-- Opções dinâmicas injetadas pelo JS -->
+                        </div>
+
+                        <div id="quiz-feedback" class="quiz-feedback-msg hidden"></div>
+
+                        <div class="quiz-footer-actions">
+                            <button id="btn-next-question" class="btn btn-primary hidden">Próxima Pergunta <i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div id="quiz-result" class="hidden text-center">
+                        <div class="result-icon-wrapper" id="result-icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 id="result-title">Título do Resultado</h3>
+                        <p id="result-score-text" class="result-score">Você acertou X de 5 perguntas (Y%)</p>
+                        <p id="result-message" class="result-desc">Mensagem descritiva de feedback.</p>
+                        <button id="btn-restart-quiz" class="btn btn-primary"><i class="fa-solid fa-rotate-right"></i> Fazer Novamente</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SEÇÃO REFERÊNCIAS -->
+        <section id="referencias" class="spa-section">
+            <div class="container section-padding">
+                <div class="section-header">
+                    <span class="sub-tag">FONTES CONFIÁVEIS</span>
+                    <h2>Referências & Leitura Complementar</h2>
+                    <p>O conteúdo deste portal foi elaborado com base nas orientações das principais instituições de educação, segurança digital e defesa dos direitos da infância e juventude.</p>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="card ref-card">
+                        <div class="ref-header">
+                            <i class="fa-solid fa-building-columns ref-icon"></i>
+                            <div>
+                                <h3>SaferNet Brasil</h3>
+                                <span class="ref-tag">Organização Não Governamental</span>
+                            </div>
+                        </div>
+                        <p>Referência nacional no enfrentamento a crimes e violações aos Direitos Humanos na Internet, além de promover o uso seguro e consciente da rede.</p>
+                        <a href="https://new.safernet.org.br/" target="_blank" rel="noopener noreferrer" class="btn-link">
+                            Acessar fonte <i class="fa-solid fa-up-right-from-square"></i>
+                        </a>
+                    </div>
+
+                    <div class="card ref-card">
+                        <div class="ref-header">
+                            <i class="fa-solid fa-globe ref-icon"></i>
+                            <div>
+                                <h3>UNICEF Brasil</h3>
+                                <span class="ref-tag">Fundo das Nações Unidas</span>
+                            </div>
+                        </div>
+                        <p>Guias educativos, materiais sobre bem-estar emocional e estratégias de prevenção do cyberbullying entre adolescentes no ambiente escolar.</p>
+                        <a href="https://www.unicef.org/brazil/" target="_blank" rel="noopener noreferrer" class="btn-link">
+                            Acessar fonte <i class="fa-solid fa-up-right-from-square"></i>
+                        </a>
+                    </div>
+
+                    <div class="card ref-card">
+                        <div class="ref-header">
+                            <i class="fa-solid fa-landmark ref-icon"></i>
+                            <div>
+                                <h3>Ministério da Educação (MEC)</h3>
+                                <span class="ref-tag">Governo Federal</span>
+                            </div>
+                        </div>
+                        <p>Diretrizes nacionais para a promoção da cultura de paz nas escolas e combate à violência sistemática e ao bullying digital.</p>
+                        <a href="https://www.gov.br/mec/pt-br" target="_blank" rel="noopener noreferrer" class="btn-link">
+                            Acessar fonte <i class="fa-solid fa-up-right-from-square"></i>
+                        </a>
+                    </div>
+
+                    <div class="card ref-card">
+                        <div class="ref-header">
+                            <i class="fa-solid fa-book-bookmark ref-icon"></i>
+                            <div>
+                                <h3>UNESCO Brasil</h3>
+                                <span class="ref-tag">Organização Internacional</span>
+                            </div>
+                        </div>
+                        <p>Publicações relativas à cidadania digital, alfabetização midiática e prevenção do discurso de ódio nas plataformas virtuais.</p>
+                        <a href="https://www.unesco.org/pt/fieldoffice/brasilia" target="_blank" rel="noopener noreferrer" class="btn-link">
+                            Acessar fonte <i class="fa-solid fa-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. SEÇÃO CONTATO -->
+        <section id="contato" class="spa-section">
+            <div class="container section-padding">
+                <div class="section-header">
+                    <span class="sub-tag">CANAIS DE APOIO</span>
+                    <h2>Onde Encontrar Ajuda</h2>
+                    <p>Conheça os canais internos e externos aos quais você pode recorrer ao presenciar ou vivenciar momentos difíceis na internet.</p>
+                </div>
+
+                <div class="grid grid-3">
+                    <div class="card contact-card">
+                        <div class="card-icon"><i class="fa-solid fa-school"></i></div>
+                        <h3>Equipe Escolar</h3>
+                        <p>Procure a orientação pedagógica, professores de confiança ou a direção da escola. Eles estão preparados para ouvir e orientar sem julgamentos.</p>
+                    </div>
+
+                    <div class="card contact-card">
+                        <div class="card-icon"><i class="fa-solid fa-people-roof"></i></div>
+                        <h3>Adulto de Confiança</h3>
+                        <p>Pais, responsáveis, tios ou irmãos mais velhos podem ajudar a tomar as melhores decisões e acompanhar você em registros formais.</p>
+                    </div>
+
+                    <div class="card contact-card">
+                        <div class="card-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                        <h3>Instituições Oficiais</h3>
+                        <p>Canais como a Helpline da SaferNet e o Disque 100 oferecem apoio gratuito, anônimo e especializado em segurança de crianças e jovens na web.</p>
+                    </div>
+                </div>
+
+                <!-- Simulação de Mapa / Localização -->
+                <div class="map-simulation-card card">
+                    <div class="map-info">
+                        <h3><i class="fa-solid fa-location-dot"></i> Espaço de Apoio Presencial na Escola</h3>
+                        <p>Salas da Orientação Educacional e Equipe Pedagógica. Atendimento disponível durante todos os horários de intervalo escolar.</p>
+                    </div>
+                    <div class="map-placeholder">
+                        <div class="map-content">
+                            <i class="fa-solid fa-map-location-dot map-icon"></i>
+                            <span>Mapa Ilustrativo do Portal de Apoio ao Estudante</span>
+                            <small>Um ambiente seguro de escuta no coração do nosso colégio</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Botão Flutuante de Ajuda -->
+    <a href="#escuta" class="floating-btn nav-link" data-section="escuta" aria-label="Acessar Portal de Escuta Rapidamente">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <span class="floating-btn-text">Preciso de Ajuda</span>
+    </a>
+
+    <!-- Botão Voltar ao Topo -->
+    <button id="btn-top" class="btn-top" aria-label="Voltar para o topo da página">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">CONEXÃO</span>
+                <p>Informação, respeito e acolhimento para uma convivência mais segura dentro e fora da internet.</p>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#home" class="nav-link" data-section="home">Início</a></li>
+                    <li><a href="#cyberbullying" class="nav-link" data-section="cyberbullying">Cyberbullying</a></li>
+                    <li><a href="#seguranca" class="nav-link" data-section="seguranca">Segurança Digital</a></li>
+                    <li><a href="#escuta" class="nav-link" data-section="escuta">Portal de Escuta</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-group">
+                <h4>Apoio</h4>
+                <ul>
+                    <li><a href="#quiz" class="nav-link" data-section="quiz">Quiz Interativo</a></li>
+                    <li><a href="#referencias" class="nav-link" data-section="referencias">Referências</a></li>
+                    <li><a href="#contato" class="nav-link" data-section="contato">Canais de Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Redes da Escola</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Podcast"><i class="fa-solid fa-podcast"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 Conexão — Portal de Apoio ao Estudante | Projeto Educacional sem fins lucrativos.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
